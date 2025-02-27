@@ -291,8 +291,8 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[0]);
-			int MaximumCPS = Int32.Parse(args[0]);
+			int MinimumCPS = Int32.Parse(args[4]);
+			int MaximumCPS = Int32.Parse(args[5]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			DrawStatus(StatusRow, ClickerEnabled);
 			
@@ -364,21 +364,21 @@ namespace n$namespace
 							// 0x0084 = WM_NCHITTEST
 							if (SendMessage(ForegroundWindow, 0x0084, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y)) == (IntPtr) 1)
 							{
-								if (rand.Next(1. 6) == 2)
+								if (rand.Next(1, 6) == 2)
 								{
-									if (rand.Next(1. 6) <= 2) Thread.Sleep(rand.Next((900 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(10, 0)) >> 1);
-									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (900 / MinimumCPS)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
+									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) >> 1);
 								}
 								else
 								{
 									SendMessage((IntPtr) ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1. 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(0, 0)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
 									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) >> 1);
 										
 									SendMessage((IntPtr) ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1. 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(0, 0)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
 									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) >> 1);
 								}
 							}
@@ -417,7 +417,7 @@ namespace n$namespace
 							// 0x0084 = WM_NCHITTEST
 							if (SendMessage(ForegroundWindow, 0x0084, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y)) == (IntPtr) 1)
 							{
-								int SleepTime = rand.Next((100 / MaximumCPS), (100 / MinimumCPS));
+								int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
 								SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 								Thread.Sleep(SleepTime);
 								SendMessage(ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
