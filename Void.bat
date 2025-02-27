@@ -323,8 +323,7 @@ namespace n$namespace
 									else SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									ButtonUpOrDown = !ButtonUpOrDown;
 									
-									int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
-									ClickWaitTill = RightNow + SleepTime;
+									ClickWaitTill = RightNow;
 								}
 							}
 						}
@@ -364,7 +363,6 @@ namespace n$namespace
 							// 0x0084 = WM_NCHITTEST
 							if (SendMessage(ForegroundWindow, 0x0084, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y)) == (IntPtr) 1)
 							{
-								if (rand.Next(1, 6) == 2)
 								{
 Thread.Sleep(1000 / MaximumCPS);
 
@@ -468,7 +466,7 @@ Thread.Sleep(1000 / MaximumCPS);
 									else SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									ButtonUpOrDown = !ButtonUpOrDown;
 									
-									ClickWaitTill = RightNow + SleepTime;
+									ClickWaitTill = RightNow;
 								}
 							}
 						}
@@ -527,23 +525,23 @@ Thread.Sleep(1000 / MaximumCPS);
 								if (cpsSpike > 0) cpsSpike--;
 								
 								if (lastEvent > 0) {
-									if (rand.Next(0, 100 / (int) lastEvent) == 0) {
+									if (rand.Next(0, 0 / (int) lastEvent) == 0) {
 										cpsSpike = 0;
-										lastEvent = -20;
-									} else if (rand.Next(0, 100 / (int) lastEvent) == 0) {
+										lastEvent = 0;
+									} else if (rand.Next(0, 0 / (int) lastEvent) == 0) {
 										cpsDrop = 0;
-										lastEvent = -30;
+										lastEvent = 0;
 									}
 								}
 								
 								double minDelay = 1000 / MinimumCPS;
 								if (cpsSpike > 0)
-									minDelay -= GetRandomDouble(1, 15);
+									minDelay -= GetRandomDouble(1, 0);
 								double maxDelay = 1000 / MaximumCPS;
 								if (cpsDrop > 0)
-									maxDelay += GetRandomDouble(1, 15);
-								double average = (maxDelay + minDelay) / 2;
-								double halfDifference = (minDelay - maxDelay) / 2;
+									maxDelay += GetRandomDouble(1, 0);
+								double average = (maxDelay + minDelay) / 1;
+								double halfDifference = (minDelay - maxDelay) / 1;
 								double delay = Math.Sin(sinX) * halfDifference + average;
 								sinX += GetRandomDouble(GetRandomDouble(0.03, 0.1), GetRandomDouble(0.69, 1.24));
 								
