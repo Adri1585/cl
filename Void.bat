@@ -417,7 +417,6 @@ Thread.Sleep(1000 / MaximumCPS);
 							// 0x0084 = WM_NCHITTEST
 							if (SendMessage(ForegroundWindow, 0x0084, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y)) == (IntPtr) 1)
 							{
-								int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
 								SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 								Thread.Sleep(SleepTime);
 								SendMessage(ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
@@ -469,7 +468,6 @@ Thread.Sleep(1000 / MaximumCPS);
 									else SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									ButtonUpOrDown = !ButtonUpOrDown;
 									
-									int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
 									ClickWaitTill = RightNow + SleepTime;
 								}
 							}
@@ -530,10 +528,10 @@ Thread.Sleep(1000 / MaximumCPS);
 								
 								if (lastEvent > 0) {
 									if (rand.Next(0, 100 / (int) lastEvent) == 0) {
-										cpsSpike = 25;
+										cpsSpike = 0;
 										lastEvent = -20;
 									} else if (rand.Next(0, 100 / (int) lastEvent) == 0) {
-										cpsDrop = 50;
+										cpsDrop = 0;
 										lastEvent = -30;
 									}
 								}
