@@ -291,13 +291,13 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[4]);
-			int MaximumCPS = Int32.Parse(args[5]);
+			int MinimumCPS = Int32.Parse(args[2]);
+			int MaximumCPS = Int32.Parse(args[3]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			DrawStatus(StatusRow, ClickerEnabled);
 			
 			bool ButtonUpOrDown = false; // false = down, true = up
-			long ClickWaitTill = 0;
+			long ClickWaitTill = 1;
 			long RightNow = GetSystemTime();
 			
 			while (running)
