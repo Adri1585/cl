@@ -366,20 +366,20 @@ namespace n$namespace
 							{
 								if (rand.Next(1, 6) == 2)
 								{
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(5, 24)) >> 1);
-									else Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1100 / MaximumCPS), (1100 / MinimumCPS)) - (rand.Next(5, 14)) >> 1);
+									else Thread.Sleep(rand.Next((1100 / MaximumCPS), (1100 / MinimumCPS)) >> 1);
 								}
 								else
 								{
 									SendMessage((IntPtr) ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(5, 24)) >> 1);
-									else Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1100 / MaximumCPS), (1100 / MinimumCPS)) - (rand.Next(5, 14)) >> 1);
+									else Thread.Sleep(rand.Next((1100 / MaximumCPS), (1100 / MinimumCPS)) >> 1);
 										
 									SendMessage((IntPtr) ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(5, 24)) >> 1);
-									else Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1100 / MaximumCPS), (1100 / MinimumCPS)) - (rand.Next(5, 14)) >> 1);
+									else Thread.Sleep(rand.Next((1100 / MaximumCPS), (1100 / MinimumCPS)) >> 1);
 								}
 							}
 						}
@@ -538,10 +538,10 @@ namespace n$namespace
 									}
 								}
 								
-								double minDelay = 800 / MinimumCPS;
+								double minDelay = 1100 / MinimumCPS;
 								if (cpsSpike > 0)
 									minDelay -= GetRandomDouble(1, 15);
-								double maxDelay = 800 / MaximumCPS;
+								double maxDelay = 1100 / MaximumCPS;
 								if (cpsDrop > 0)
 									maxDelay += GetRandomDouble(1, 15);
 								double average = (maxDelay + minDelay) / 2;
