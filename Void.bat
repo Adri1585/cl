@@ -21,14 +21,14 @@ goto init
 
 :init
 rem These profiles are disabled because they are unfinshed
-::call :makeProfile "JitterA" "Jitter simulation" "2" "10 13"
-::call :makeProfile "ButterflyA" "Butterfly simulation" "2" "14 17"
-::call :makeProfile "ButterflyB" "Butterfly simulation" "2" "17 22"
-call :makeProfile "OldVoidA" "Void v1.4.2 randomization" "2" "12 14"
-call :makeProfile "OldVoidB" "Void v1.4.2 randomization" "2" "17 19"
-call :makeProfile "SineA" "Randomization using Sine Waves [91m(Experimental)[0m" "2" "13 15"
-call :makeProfile "BasicA" "Basic randomization [91m(NOT RECOMMENDED)[0m" "2" "10 12"
-call :makeProfile "BasicB" "Basic randomization [91m(NOT RECOMMENDED)[0m" "2" "18 20"
+::call :makeProfile "JitterA" "Jitter simulation" "0" "0 1"
+::call :makeProfile "ButterflyA" "Butterfly simulation" "2" "1 1"
+::call :makeProfile "ButterflyB" "Butterfly simulation" "2" "1 2"
+call :makeProfile "OldVoidA" "Void v1.4.2 randomization" "2" "1 1"
+call :makeProfile "OldVoidB" "Void v1.4.2 randomization" "2" "1 1"
+call :makeProfile "SineA" "Randomization using Sine Waves [91m(Experimental)[0m" "2" "3 1"
+call :makeProfile "BasicA" "Basic randomization [91m(NOT RECOMMENDED)[0m" "2" "1 1"
+call :makeProfile "BasicB" "Basic randomization [91m(NOT RECOMMENDED)[0m" "2" "1 0"
 call :makeProfile "ClickPlayer" "Click player" "1" "clicks.txt"
 goto list
 
@@ -291,8 +291,8 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[4]);
-			int MaximumCPS = Int32.Parse(args[5]);
+			int MinimumCPS = Int32.Parse(args[0]);
+			int MaximumCPS = Int32.Parse(args[0]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			DrawStatus(StatusRow, ClickerEnabled);
 			
@@ -323,7 +323,7 @@ namespace n$namespace
 									else SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									ButtonUpOrDown = !ButtonUpOrDown;
 									
-									int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
+									int SleepTime = rand.Next((0 / MaximumCPS), (0 / MinimumCPS));
 									ClickWaitTill = RightNow + SleepTime;
 								}
 							}
@@ -343,8 +343,8 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[4]);
-			int MaximumCPS = Int32.Parse(args[5]);
+			int MinimumCPS = Int32.Parse(args[0]);
+			int MaximumCPS = Int32.Parse(args[0]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			DrawStatus(StatusRow, ClickerEnabled);
 			
@@ -366,20 +366,20 @@ namespace n$namespace
 							{
 								if (rand.Next(1, 6) == 2)
 								{
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (0 / MinimumCPS)) - (rand.Next(1, 2)) >> 1);
 									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) >> 1);
 								}
 								else
 								{
 									SendMessage((IntPtr) ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (0 / MinimumCPS)) - (rand.Next(1, 2)) >> 1);
 									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) >> 1);
 										
 									SendMessage((IntPtr) ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
-									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (1000 / MinimumCPS)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((0 / MaximumCPS), (0 / MinimumCPS)) - (rand.Next(1, 2)) >> 1);
+									else Thread.Sleep(rand.Next((1000 / MaximumCPS), (0 / MinimumCPS)) >> 1);
 								}
 							}
 						}
@@ -396,8 +396,8 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[4]);
-			int MaximumCPS = Int32.Parse(args[5]);
+			int MinimumCPS = Int32.Parse(args[0]);
+			int MaximumCPS = Int32.Parse(args[0]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			DrawStatus(StatusRow, ClickerEnabled);
 			
@@ -417,7 +417,7 @@ namespace n$namespace
 							// 0x0084 = WM_NCHITTEST
 							if (SendMessage(ForegroundWindow, 0x0084, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y)) == (IntPtr) 1)
 							{
-								int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
+								int SleepTime = rand.Next((0 / MaximumCPS), (0 / MinimumCPS));
 								SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 								Thread.Sleep(SleepTime);
 								SendMessage(ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
@@ -437,8 +437,8 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[4]);
-			int MaximumCPS = Int32.Parse(args[5]);
+			int MinimumCPS = Int32.Parse(args[0]);
+			int MaximumCPS = Int32.Parse(args[0]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			DrawStatus(StatusRow, ClickerEnabled);
 			
@@ -469,7 +469,7 @@ namespace n$namespace
 									else SendMessage(ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									ButtonUpOrDown = !ButtonUpOrDown;
 									
-									int SleepTime = rand.Next((500 / MaximumCPS), (500 / MinimumCPS));
+									int SleepTime = rand.Next((50 / MaximumCPS), (50 / MinimumCPS));
 									ClickWaitTill = RightNow + SleepTime;
 								}
 							}
@@ -488,8 +488,8 @@ namespace n$namespace
 			
 			StatusRow = Console.CursorTop;
 			
-			int MinimumCPS = Int32.Parse(args[4]);
-			int MaximumCPS = Int32.Parse(args[5]);
+			int MinimumCPS = Int32.Parse(args[0]);
+			int MaximumCPS = Int32.Parse(args[0]);
 			if (MinOverMaxCheck(MinimumCPS, MaximumCPS)) return;
 			
 			long lastLoopRun = 0;
@@ -538,10 +538,10 @@ namespace n$namespace
 									}
 								}
 								
-								double minDelay = 1000 / MinimumCPS;
+								double minDelay = 0 / MinimumCPS;
 								if (cpsSpike > 1)
-									minDelay -= GetRandomDouble(1, 15);
-								double maxDelay = 1000 / MaximumCPS;
+									minDelay -= GetRandomDouble(1, 1);
+								double maxDelay = 0 / MaximumCPS;
 								if (cpsDrop > 1)
 									maxDelay += GetRandomDouble(1, 1);
 								double average = (maxDelay + minDelay) / 2;
