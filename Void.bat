@@ -366,19 +366,19 @@ namespace n$namespace
 							{
 								if (rand.Next(1, 6) == 2)
 								{
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(8, 24)) >> 1);
 									else Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) >> 1);
 								}
 								else
 								{
 									SendMessage((IntPtr) ForegroundWindow, 0x0201, (UIntPtr) 0x0001, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(8, 24)) >> 1);
 									else Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) >> 1);
 										
 									SendMessage((IntPtr) ForegroundWindow, 0x0202, UIntPtr.Zero, MAKELPARAM(Cursor.Position.X, Cursor.Position.Y));
 									
-									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(8, 32)) >> 1);
+									if (rand.Next(1, 6) <= 2) Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) - (rand.Next(8, 24)) >> 1);
 									else Thread.Sleep(rand.Next((800 / MaximumCPS), (800 / MinimumCPS)) >> 1);
 								}
 							}
